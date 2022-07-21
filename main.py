@@ -4,9 +4,21 @@ from keras.datasets import cifar10
 
 
 
+# load train and test dataset
+def load_dataset():
+	# load dataset
+	(trainX, trainY), (testX, testY) = cifar10.load_data()
+
+	# one hot encode target values
+	trainY = to_categorical(trainY)
+	testY = to_categorical(testY)
+    
+	return trainX, trainY, testX, testY
+
+
 if __name__ == "__main__":
     # load dataset
-    (trainX, trainy), (testX, testy) = cifar10.load_data()
+    trainX, trainy, testX, testy = load_dataset()
 
     # summarize loaded dataset
     print('Train: X=%s, y=%s' % (trainX.shape, trainy.shape))
@@ -21,4 +33,3 @@ if __name__ == "__main__":
 
     # show the figure
     pyplot.show()
-    
