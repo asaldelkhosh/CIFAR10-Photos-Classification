@@ -37,6 +37,24 @@ def define_model():
 	return model
 
 
+# plot diagnostic learning curves
+def summarize_diagnostics(history):
+	# plot loss
+	pyplot.subplot(211)
+	pyplot.title('Cross Entropy Loss')
+	pyplot.plot(history.history['loss'], color='blue', label='train')
+	pyplot.plot(history.history['val_loss'], color='orange', label='test')
+	# plot accuracy
+	pyplot.subplot(212)
+	pyplot.title('Classification Accuracy')
+	pyplot.plot(history.history['accuracy'], color='blue', label='train')
+	pyplot.plot(history.history['val_accuracy'], color='orange', label='test')
+	# save plot to file
+	filename = sys.argv[0].split('/')[-1]
+	pyplot.savefig(filename + '_plot.png')
+	pyplot.close()
+
+
 if __name__ == "__main__":
     # load dataset
     trainX, trainy, testX, testy = load_dataset()
@@ -63,3 +81,6 @@ if __name__ == "__main__":
 
 	# evaluate model
 	_, acc = model.evaluate(testX, testY, verbose=0)
+
+	# summarizing the diagnostics
+	summarize_diagnostics(history)
