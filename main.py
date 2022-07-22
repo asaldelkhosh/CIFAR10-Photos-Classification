@@ -30,6 +30,13 @@ def prep_pixels(train, test):
 	return train_norm, test_norm
 
 
+# define cnn model
+def define_model():
+	model = Sequential()
+	# ...
+	return model
+
+
 if __name__ == "__main__":
     # load dataset
     trainX, trainy, testX, testy = load_dataset()
