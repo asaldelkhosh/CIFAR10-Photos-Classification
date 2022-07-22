@@ -84,3 +84,4 @@ if __name__ == "__main__":
 
 	# summarizing the diagnostics
 	summarize_diagnostics(history)
+	print('> %.3f' % (acc * 100.0))
