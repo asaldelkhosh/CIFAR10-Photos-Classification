@@ -54,3 +54,9 @@ if __name__ == "__main__":
 
     # show the figure
     pyplot.show()
+
+	# create model
+	model = define_model()
+
+	# fit model
+	history = model.fit(trainX, trainY, epochs=100, batch_size=64, validation_data=(testX, testY), verbose=0)
