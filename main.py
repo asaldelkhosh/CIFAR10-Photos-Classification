@@ -60,3 +60,6 @@ if __name__ == "__main__":
 
 	# fit model
 	history = model.fit(trainX, trainY, epochs=100, batch_size=64, validation_data=(testX, testY), verbose=0)
+
+	# evaluate model
+	_, acc = model.evaluate(testX, testY, verbose=0)
