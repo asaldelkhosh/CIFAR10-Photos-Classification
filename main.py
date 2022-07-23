@@ -77,6 +77,9 @@ if __name__ == "__main__":
     # load dataset
     trainX, trainy, testX, testy = load_dataset()
 
+	# prepare pixel data
+	trainX, testX = prep_pixels(trainX, testX)
+
     # summarize loaded dataset
     print('Train: X=%s, y=%s' % (trainX.shape, trainy.shape))
     print('Test: X=%s, y=%s' % (testX.shape, testy.shape))
