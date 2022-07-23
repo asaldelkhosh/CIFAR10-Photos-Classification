@@ -1,6 +1,15 @@
 # example of loading the cifar10 dataset
+import sys
 from matplotlib import pyplot
 from keras.datasets import cifar10
+from keras.utils import to_categorical
+from keras.models import Sequential
+from keras.layers import Conv2D
+from keras.layers import MaxPooling2D
+from keras.layers import Dense
+from keras.layers import Flatten
+from keras.optimizers import SGD
+from keras.preprocessing.image import ImageDataGenerator
 
 
 
@@ -96,6 +105,11 @@ if __name__ == "__main__":
 
 	# create model
 	model = define_model()
+
+	# create data generator
+	datagen = ImageDataGenerator(width_shift_range=0.1, height_shift_range=0.1, horizontal_flip=True)
+	# prepare iterator
+	it_train = datagen.flow(trainX, trainY, batch_size=64)
 
 	# fit model
 	history = model.fit(trainX, trainY, epochs=100, batch_size=64, validation_data=(testX, testY), verbose=0)
