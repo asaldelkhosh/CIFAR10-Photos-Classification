@@ -112,7 +112,8 @@ if __name__ == "__main__":
 	it_train = datagen.flow(trainX, trainY, batch_size=64)
 
 	# fit model
-	history = model.fit(trainX, trainY, epochs=100, batch_size=64, validation_data=(testX, testY), verbose=0)
+	steps = int(trainX.shape[0] / 64)
+	history = model.fit(it_train, steps_per_epoch=steps, epochs=100, validation_data=(testX, testY), verbose=0)
 
 	# evaluate model
 	_, acc = model.evaluate(testX, testY, verbose=0)
