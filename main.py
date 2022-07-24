@@ -115,6 +115,9 @@ if __name__ == "__main__":
 	steps = int(trainX.shape[0] / 64)
 	history = model.fit(it_train, steps_per_epoch=steps, epochs=100, validation_data=(testX, testY), verbose=0)
 
+	# save model
+	model.save('final_model.h5')
+
 	# evaluate model
 	_, acc = model.evaluate(testX, testY, verbose=0)
 
