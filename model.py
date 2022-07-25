@@ -1,3 +1,4 @@
+import sys
 from dataset import load_dataset, prep_pixels
 from matplotlib import pyplot
 from keras.models import Sequential
@@ -6,6 +7,9 @@ from keras.layers import MaxPooling2D
 from keras.layers import Dense
 from keras.layers import Flatten
 from keras.optimizers import SGD
+from keras.preprocessing.image import ImageDataGenerator
+from keras.layers import Dropout
+from keras.layers import BatchNormalization
 
 
 
